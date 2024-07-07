@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import axios from 'axios';
 
 const Login = () => {
   const [username, setUsername]=useState('');
   const [password, setPassword]=useState('');
+  const [redirect, setRedirect]=useState(false);
   async function handleLoginSubmit(ev){
     ev.preventDefault();
     try{
       await axios.post('/login',{username, password});
       alert('Login Successful');
+      setRedirect(true);
+
     }catch(e){
       alert('Login failed');
     }
+  }
+  if (redirect){
+    return <Navigate to={'/home'} />
   }
   return (
     <div className="bg-gray-200 flex justify-center">

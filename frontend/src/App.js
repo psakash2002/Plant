@@ -12,6 +12,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL="http://localhost:4000";
+axios.defaults.withCredentials=true;
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
     <Routes>
       <Route path="/register" exact element={<Register />}/>
       <Route path="/login" exact element={<Login />}/>
-      <Route path="/Home" exact element={<Home />}/>
+      <Route path="/home" exact element={<Home />}/>
       <Route path="/about" exact element={<About />}/>
       <Route path="/offer" exact element={<Offer />}/>
       <Route path="/cart" exact element={<Cart />}/>
